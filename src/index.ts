@@ -1,5 +1,5 @@
 import { number, string } from "yargs";
-import { clear, print, askQuestion } from "./console";
+import { clear, print, askQuestion, enterValidInput } from "./console";
 import { moveRover } from "./main";
 
 interface roverObjModel {
@@ -11,7 +11,7 @@ interface roverObjModel {
   inputString: string
 }
 
-let roverObj: roverObjModel = {
+export let roverObj: roverObjModel = {
   gridX: 0,
   gridY: 0,
   xCoordinate: 0,
@@ -20,7 +20,7 @@ let roverObj: roverObjModel = {
   inputString: " ",
 };
 
-const direction: Array<string> = ["n", "S", "w", "e"];
+const direction: Array<string> = ["N", "S", "W", "E"];
 
 export function startRover(): void {
   clear(false);
@@ -75,9 +75,9 @@ function getCoordinates(input: string){
 }
 
 function getStartPosition(str: string) {
-  const direction = isDirection(str);
+  const direction = isDirection(str.toUpperCase());
   if (direction) {
-    roverObj.inputDirection = str;
+    roverObj.inputDirection = str.toUpperCase();
     print("--------------------------");
     askQuestion(
       `Please enter the input string to move the rover (Ex: LMMMLMMR)`,
@@ -94,21 +94,15 @@ function getStartPosition(str: string) {
 function getInputString(str: string) {
   if (!/[^MLR]/g.test(str)) {
     roverObj.inputString = str;
-    moveRover(roverObj);
+    moveRover();
   } else {
     enterValidInput;
   }
 }
 
 function isDirection(input: string) {
-  console.log(input);
-  console.log(direction.includes(input));
   return direction.includes(input);
 }
-export function enterValidInput(): void {
-  print("***************************************");
-  print("You did not entered the valid input. 😭");
-  askQuestion("Press ENTER to restart! ", startRover);
-}
+
 
 startRover();

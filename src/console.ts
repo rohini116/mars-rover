@@ -1,4 +1,5 @@
 import * as readline from "node:readline";
+import { startRover } from "./index";
 
 export function print(str: any): void {
   console.log(str);
@@ -21,4 +22,10 @@ const reader = readline.createInterface({
 // this function allows us to prompt the user with a question, and call a callback function with whatever string has been input
 export function askQuestion(question: string, callback: (arg: string) => void) {
   reader.question(`${question} `, callback);
+}
+
+export function enterValidInput(msg?: string): void {
+  print("***************************************");
+  print((msg ? msg : "Please Enter valid input") + " 😭");
+  askQuestion("Press ENTER to restart! ", startRover);
 }
