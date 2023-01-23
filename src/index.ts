@@ -63,7 +63,7 @@ function getCoordinates(input: string){
     roverObj.xCoordinate = x;
     roverObj.yCoordinate = y;
     askQuestion(
-      `Please enter the rover starting direction (Possible Values are n, s, w, e)`,
+      `Please enter the rover starting direction (Possible Values are N, S, W, E)`,
       getStartPosition
     );
     

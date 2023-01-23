@@ -7,8 +7,7 @@ export function moveRover(){
 }
 
 function detectLeftdirection() {
-  const direction = roverObj.inputDirection;
-  switch (direction) {
+  switch(roverObj.inputDirection) {
     case "N":
       roverObj.inputDirection = "W";
       break;
@@ -25,8 +24,7 @@ function detectLeftdirection() {
   
 }
 function detectRightdirection() {
-  const direction = roverObj.inputDirection;
-  switch (direction) {
+  switch (roverObj.inputDirection) {
     case "N":
       roverObj.inputDirection = "E";
       break;
@@ -43,9 +41,8 @@ function detectRightdirection() {
   
 }
 function moveForward() {
-  let flag = true;
-  const direction = roverObj.inputDirection
-  switch (direction) {
+  var flag = true;
+  switch (roverObj.inputDirection) {
     case "N":
       roverObj.yCoordinate++;
       roverObj.yCoordinate > roverObj.gridY ? (flag = false) : flag;
