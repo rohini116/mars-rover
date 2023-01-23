@@ -1,4 +1,4 @@
-import { roverObj } from "./index";
+import { roverObj, startRover } from "./index";
 import { print, askQuestion ,enterValidInput } from "./console";
 import { string } from "yargs";
 
@@ -103,4 +103,5 @@ function startMovement() {
 function printRoverFinalPosition(): void{
   const outString: string = roverObj.xCoordinate.toString() + " " + roverObj.yCoordinate.toString() + " " + roverObj.inputDirection;
   print(outString);
+  askQuestion("Press ENTER to restart! ", startRover);
 }
